@@ -1,0 +1,33 @@
+{
+    "quizzes": [
+        {
+            "category": "Example Custom",
+            "questions": [
+                {
+                    "type": "multiple",
+                    "question": "What is the capital of France?",
+                    "incorrect_answers": ["Berlin", "Madrid", "Rome"],
+                    "correct_answer": "Paris"
+                },
+                {
+                    "type": "multiple",
+                    "question": "What is 2 + 2?",
+                    "incorrect_answers": ["3", "5", "6"],
+                    "correct_answer": "4"
+                },
+                {
+                    "type": "boolean",
+                    "question": "The sky is blue.",
+                    "incorrect_answers": ["False"],
+                    "correct_answer": "True"
+                },
+                {
+                    "type": "boolean",
+                    "question": "Cats are mammals.",
+                    "incorrect_answers": ["False"],
+                    "correct_answer": "True"
+                }
+            ]
+        }
+    ]
+}
