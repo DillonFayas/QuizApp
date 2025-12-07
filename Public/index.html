@@ -4,10 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzer</title>
+    <script src="client.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
-<body>
-    
+<body class="background">
+    <div class="d-flex justify-content-center align-items-center">
+        <h1 class="title m-3 mt-2">Quizzer!</h1>
+    </div>
+    <div id="home" class="row justify-content-center align-items-start">
+        <div class="card col-7 mx-2">
+            <div class="card-body px-1">
+                <h5 class="card-title text">Take a Quiz</h5>
+                <h6 class="card-subtitle mb-2 text-muted text">Choose from available quizzes</h6>
+
+                <hr>
+
+                <h5>Category</h5>
+                <div class="dropdown mb-3">
+                    <select id="categorySelection" class="form-select">
+                        <option selected value="-1">Any Category</option>
+                    </select>
+                </div>
+
+                <h5>Question Count</h5>
+                <input type="number" class="form-control mb-3" placeholder="50" value="10" aria-label="Number of questions">
+
+                <h5>Difficulty</h5>
+                <div class="btn-group mb-3" role="group" aria-label="Difficulty selection">
+                    <input type="radio" class="btn-check" name="difficulty" id="difficultyAny" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary" for="difficultyAny">Any</label>
+                    
+                    <input type="radio" class="btn-check" name="difficulty" id="difficultyEasy" autocomplete="off">
+                    <label class="btn btn-outline-success" for="difficultyEasy">Easy</label>
+                    
+                    <input type="radio" class="btn-check" name="difficulty" id="difficultyMedium" autocomplete="off">
+                    <label class="btn btn-outline-warning" for="difficultyMedium">Medium</label>
+
+                    <input type="radio" class="btn-check" name="difficulty" id="difficultyHard" autocomplete="off">
+                    <label class="btn btn-outline-danger" for="difficultyHard">Hard</label>
+                </div>
+
+                <h5>Type</h5>
+                <div class="btn-group mb-2" role="group" aria-label="Type selection">
+                    <input type="radio" class="btn-check" name="type" id="typeAny" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary" for="typeAny">Any</label>
+                    
+                    <input type="radio" class="btn-check" name="type" id="typeMultipleChoice" autocomplete="off">
+                    <label class="btn btn-outline-info" for="typeMultipleChoice">Multiple Choice</label>
+                    
+                    <input type="radio" class="btn-check" name="type" id="typeTrueFalse" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="typeTrueFalse">True/False</label>
+                </div>
+
+                <hr>
+
+                <a href="#" class="btn btn-primary text">Take Quiz</a>
+                <div id="takeQuizError" class="alert alert-danger mt-3 visually-hidden" role="alert">
+                    Error!
+                </div>
+            </div>
+        </div>
+        <div class="card col-3 mx-2">
+            <div class="card-body px-1">
+                <h5 class="card-title text">Quiz Builder</h5>
+                <h6 class="card-subtitle mb-2 text-muted text">Create your own quiz!</h6>
+                <p class="card-text text">Build your own quiz and publish it to Quizzer for others to take.</p>
+                <a href="#" class="btn btn-success text">Build Quiz</a>
+            </div>
+        </div>
+    </div>
+    <div id="quiz" class="row justify-content-center align-items-start visually-hidden">
+        <div class="text d-flex justify-content-center mb-2">
+            <span class="badge rounded-pill bg-info">Time Spent: 00:00</span>
+        </div>
+        <div class="card col-10 mb-2">
+            <div class="card-body px-1">
+                <h5 class="card-title text">Question 1</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="q1option1">
+                    <label class="form-check-label text" for="q1option1">
+                        Option1
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question1" id="q1option2">
+                    <label class="form-check-label text" for="q1option2">
+                        Option2
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card col-10 mb-2">
+            <div class="card-body px-1">
+                <h5 class="card-title text">Question 2</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="q2option1">
+                    <label class="form-check-label text" for="q2option1">
+                        Option1
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="q2option2">
+                    <label class="form-check-label text" for="q2option2">
+                        Option2
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="q2option3">
+                    <label class="form-check-label text" for="q2option3">
+                        Option3
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question2" id="q2option4">
+                    <label class="form-check-label text" for="q2option4">
+                        Option4
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    <div id="results" class="row justify-content-center align-items-start visually-hidden">
+        <div class="card col-6 mb-2">
+            <div class="card-body px-1">
+                <h2 class="card-title text mb-3">Results</h2>
+
+                <!-- SCORE -->
+                <h5 class="text">Score:</h5>
+                <p class="fs-5">
+                    <span id="resultsScore" class="badge bg-success">0 / 0</span>
+                </p>
+
+                <!-- TIME TAKEN -->
+                <h5 class="text">Time Taken:</h5>
+                <p class="fs-5">
+                    <span id="resultsTime" class="badge bg-info">00:00</span>
+                </p>
+
+                <hr>
+
+                <!-- ANSWER KEY -->
+                <h5 class="text mb-2">Answer Key</h5>
+                <div id="answerKeyList">
+
+                    <!-- <div class="card p-2 mt-2">
+                        <div>
+                            <span class="badge rounded-pill bg-success mb-1">Question 1</span>
+                        </div>
+                        <h6 class="fw-bold">Question</h6>
+                        <p class="mb-0">Your Answer: <span class="text-success">Option1</span></p>
+                    </div>
+                    <div class="card p-2 mt-2">
+                        <div>
+                            <span class="badge rounded-pill bg-danger mb-1">Question 2</span>
+                        </div>
+                        <h6 class="fw-bold">Question</h6>
+                        <p class="mb-0">Your Answer: <span class="text-danger">Option1</span></p>
+                        <p class="mb-1">Correct Answer: <span class="text-success">Option2</span></p>
+                    </div>
+                    <div class="card p-2 mt-2">
+                        <div>
+                            <span class="badge rounded-pill bg-success mb-1">Question 3</span>
+                        </div>
+                        <h6 class="fw-bold">Question</h6>
+                        <p class="mb-0">Your Answer: <span class="text-success">Option1</span></p>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary">Back to Home</button>
+        </div>
+    </div>
+    <div id="quizBuilder" class="row justify-content-center align-items-start visually-hidden">
+        
+    </div>
 </body>
 </html>

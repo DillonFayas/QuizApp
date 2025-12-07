@@ -1,0 +1,15 @@
+.background {
+    background-color: rgb(240, 240, 240);
+}
+
+.title {
+    font-weight: bold;
+    font-size: 3rem;
+    color: rgb(84, 124, 217);
+    font-family: 'Avenir', sans-serif;
+}
+
+.text {
+    color: rgb(0, 0, 0);
+    font-family: 'Avenir', sans-serif;
+}
